@@ -1,0 +1,375 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  background: #f0f8f1;
+  color: #234b32;
+}
+
+/* Green horizontal header */
+.top-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 30px;
+  background: #168447;
+  color: white;
+  flex-wrap: nowrap;
+}
+
+.top-header h2 {
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* All menu items in one horizontal line */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.navbar a:hover {
+  color: #d6f5df;
+}
+
+.logout-btn {
+  padding: 10px 16px;
+  background: white;
+  color: #168447;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Light green page background */
+.dashboard {
+  max-width: 1400px;
+  margin: auto;
+  padding: 30px;
+}
+
+.dashboard h1,
+.food-section h2 {
+  color: #168447;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin: 25px 0;
+}
+
+.stat-card,
+.food-section {
+  background: white;
+  border: 1px solid #dcefe0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(22, 132, 71, 0.08);
+}
+
+.stat-card h3 {
+  color: #52735c;
+  font-size: 15px;
+}
+
+.stat-card p {
+  color: #168447;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.food-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 18px 0;
+  border-bottom: 1px solid #e0eee3;
+}
+
+
+.status,
+.requested {
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Available - Green */
+.status {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* Requested - Red */
+.requested {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+
+/* Smaller screens */
+@media (max-width: 900px) {
+  .top-header {
+    overflow-x: auto;
+  }
+
+  .navbar {
+    gap: 16px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 500px) {
+  .dashboard {
+    padding: 18px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.request-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #dcefe0;
+}
+
+.request-card:last-child {
+  border-bottom: none;
+}
+
+.request-info h3 {
+  color: #176b3a;
+  margin-top: 0;
+}
+
+.request-info p {
+  color: #657568;
+  margin: 8px 0;
+}
+
+.request-status {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-top: 5px;
+  border-radius: 20px;
+  background: #fff0cf;
+  color: #8b6210;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.request-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.accept-btn,
+.reject-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.accept-btn {
+  background: #168447;
+  color: white;
+}
+
+.reject-btn {
+  background: white;
+  color: #b42318;
+  border: 1px solid #b42318;
+}
+
+@media (max-width: 600px) {
+  .request-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* Add Food Form Layout */
+.food-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+/* Form Labels */
+.food-form label {
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 2px;
+  color: #176b3a;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Input and Dropdown Fields */
+.food-form input,
+.food-form select {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px;
+  border: 1px solid #c8dfce;
+  border-radius: 7px;
+  background-color: #ffffff;
+  color: #234b32;
+  font-size: 15px;
+}
+
+/* Click karne par field highlight hogi */
+.food-form input:focus,
+.food-form select:focus {
+  outline: 2px solid #168447;
+  border-color: #168447;
+}
+
+/* Submit Button */
+.food-form .submit-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  border: none;
+  border-radius: 7px;
+  background-color: #168447;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.food-form .submit-btn:hover {
+  background-color: #116b38;
+}
+
+/* Donor Profile Layout */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+/* Profile Avatar */
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #168447;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* Profile Form */
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.profile-details h3 {
+  margin: 0 0 8px;
+  color: #168447;
+}
+
+.profile-details label {
+  display: block;
+  margin-top: 8px;
+  color: #176b3a;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Profile Input Fields */
+.profile-details input,
+.profile-details textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px;
+  border: 1px solid #c8dfce;
+  border-radius: 7px;
+  background-color: #ffffff;
+  color: #234b32;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.profile-details input:focus,
+.profile-details textarea:focus {
+  outline: 2px solid #168447;
+  border-color: #168447;
+}
+
+.profile-details textarea {
+  resize: vertical;
+}
+
+/* Save Profile Button */
+.profile-details .submit-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  border: none;
+  border-radius: 7px;
+  background-color: #168447;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.profile-details .submit-btn:hover {
+  background-color: #116b38;
+}

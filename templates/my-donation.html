@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Donations - ShareMeal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>🍱 ShareMeal</h1>
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('donate') }}">Donate Food</a>
+        <a href="{{ url_for('available_food') }}">Available Food</a>
+    </nav>
+</header>
+
+<section class="donations-section">
+    <h2>My Donations 📋</h2>
+    <p>Track the food donations you submit.</p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Food Name</th>
+                    <th>Quantity</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="donations-list">
+                {% for donation in donations %}
+                <tr>
+                    <td>{{ donation.food_name }}</td>
+                    <td>{{ donation.quantity }}</td>
+                    <td>{{ donation.location }}</td>
+                    <td>{{ donation.status }}</td>
+                </tr>
+                {% else %}
+                <tr><td colspan="4">No donations submitted yet.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a class="page-link" href="{{ url_for('donate') }}">+ Donate Food</a>
+</section>
+
+<footer>
+    <p>© 2026 ShareMeal | Reducing Food Waste, Sharing Hope ❤️</p>
+</footer>
+
+</body>
+</html>

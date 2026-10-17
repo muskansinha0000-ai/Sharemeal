@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Records - FoodShare</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/member3.css') }}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2 class="logo">🍲 FoodShare</h2>
+
+        <div class="nav-links">
+            <a href="{{ url_for('food_records') }}">Food Records</a>
+            <a href="#donations">Donations</a>
+            <a href="#requests">Requests</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Food Records Management</h1>
+        <p>Manage food donations and help reduce food waste.</p>
+        <a href="#donations" class="btn">View Records</a>
+    </section>
+
+    <!-- Summary Cards -->
+    <section class="container">
+        <h2 class="section-title">Dashboard Overview</h2>
+        
+<div class="search-box">
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Search food or donor..."
+    >
+</div>
+
+
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">🍱</div>
+                <h3>Total Donations</h3>
+                <p id="totalDonations">2</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🥗</div>
+                <h3>Available Food</h3>
+                <p id="availableFood">2</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <h3>Food Requests</h3>
+                <p id="foodRequests">0</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Records Table -->
+    <section class="container" id="donations">
+        <h2 class="section-title">Recent Food Records</h2>
+
+        <div class="table-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Food Name</th>
+                        <th>Quantity</th>
+                        <th>Donor</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="foodTable">
+                    <tr>
+                        <td>Vegetable Meals</td>
+                        <td>10 Plates</td>
+                        <td>Demo Restaurant</td>
+                        <td><span class="status">Available</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Rice and Curry</td>
+                        <td>5 Plates</td>
+                        <td>Demo Donor</td>
+                        <td><span class="status">Available</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="note">
+            These are sample records for project demonstration.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <h3>🍲 FoodShare</h3>
+        <p>Share Food, Spread Happiness 💚</p>
+        <p>© 2026 FoodShare Project</p>
+    </footer>
+
+    <script src="static/js/member3.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Food - ShareMeal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>🍱 ShareMeal</h1>
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('available_food') }}">Available Food</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+    </nav>
+</header>
+
+<section class="request-container">
+    <h2>Request Food 🤝</h2>
+    <p>Fill in the form to request food.</p>
+
+    <form id="requestForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="foodName">Food Required</label>
+        <input type="text" id="foodName" placeholder="Enter food name" required>
+
+        <label for="quantity">Quantity (servings)</label>
+        <input type="number" id="quantity" min="1" placeholder="Enter quantity" required>
+
+        <label for="address">Pickup Location</label>
+        <textarea id="address" placeholder="Enter your location" required></textarea>
+
+        <button type="submit">Submit Request</button>
+    </form>
+
+    <p id="request-message"></p>
+</section>
+
+<footer>
+    <p>© 2026 ShareMeal | Reducing Food Waste, Sharing Hope ❤️</p>
+</footer>
+
+<script src="{{ url_for('static', filename='js/request-food.js') }}"></script>
+</body>
+</html>

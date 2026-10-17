@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | ShareMeal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="/" class="brand">
+        <span class="brand-icon">🌿</span>
+        <span><strong>ShareMeal</strong><small>Food Donation Portal</small></span>
+    </a>
+    <a href="/" class="btn btn-outline">← Home</a>
+</header>
+
+<main style="max-width:480px; margin:45px auto; padding:25px;">
+    <div style="text-align:center; margin-bottom:25px;">
+        <div style="font-size:45px;">💚</div>
+        <h2>Join ShareMeal</h2>
+        <p style="color:#63746f;">Create an account and help reduce food waste.</p>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" style="background:#f4f8f3; padding:25px; border-radius:15px;">
+        <label for="name">Full Name</label>
+        <input id="name" type="text" name="name" required maxlength="100"
+               placeholder="Enter your full name"
+               style="width:100%; padding:13px; margin:8px 0 18px; border:1px solid #cbd9ce; border-radius:8px;">
+
+        <label for="email">Email Address</label>
+        <input id="email" type="email" name="email" required maxlength="254"
+               placeholder="Enter your email"
+               style="width:100%; padding:13px; margin:8px 0 18px; border:1px solid #cbd9ce; border-radius:8px;">
+
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" required minlength="6"
+               placeholder="At least 6 characters"
+               style="width:100%; padding:13px; margin:8px 0 22px; border:1px solid #cbd9ce; border-radius:8px;">
+
+        <button type="submit" class="btn btn-green" style="width:100%;">Create Account</button>
+
+        <p style="text-align:center; margin-top:20px;">
+            Already registered? <a href="/login" style="color:#087443;">Login here</a>
+        </p>
+    </form>
+</main>
+
+<footer>
+    <div class="footer-brand">🌿 ShareMeal</div>
+    <p>Every meal matters.</p>
+</footer>
+
+</body>
+</html>

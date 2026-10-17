@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShareMeal - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>🍱 ShareMeal</h1>
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('donate') }}">Donate Food</a>
+        <a href="{{ url_for('available_food') }}">Available Food</a>
+        <a href="{{ url_for('my_donations') }}">My Donations</a>
+        <a href="{{ url_for('request_food') }}">Request Food</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+    </nav>
+</header>
+
+<section class="dashboard">
+    <h2>Welcome to ShareMeal! ❤️</h2>
+    <p>Together, let's reduce food waste and help people in need.</p>
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+            <h3>🍱 Donate Food</h3>
+            <p>Share your extra food with people in need.</p>
+            <a href="{{ url_for('donate') }}">Donate Now</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>🍲 Available Food</h3>
+            <p>Explore food shared by generous donors.</p>
+            <a href="{{ url_for('available_food') }}">View Food</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>📋 My Donations</h3>
+            <p>Check your donation records.</p>
+            <a href="{{ url_for('my_donations') }}">View Donations</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>🤝 Request Food</h3>
+            <p>Submit a request for available food.</p>
+            <a href="{{ url_for('request_food') }}">Request Food</a>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 ShareMeal | Reducing Food Waste, Sharing Hope ❤️</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Food | ShareMeal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .donate-container {
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #f2f7f0;
+            border-radius: 16px;
+        }
+        .donate-container label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .donate-container input,
+        .donate-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            border: 1px solid #cbd9ce;
+            border-radius: 8px;
+            font: inherit;
+        }
+        .donate-container textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+        .donate-container button {
+            margin-top: 22px;
+            width: 100%;
+        }
+        @media (max-width: 700px) {
+            .donate-container {
+                margin: 20px;
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="navbar">
+    <a href="/" class="brand">
+        <span class="brand-icon">🌿</span>
+        <span><strong>ShareMeal</strong><small>Food Donation Portal</small></span>
+    </a>
+    <a href="/" class="btn btn-outline">← Home</a>
+</header>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<main class="donate-container">
+    <div style="text-align:center; margin-bottom:25px;">
+        <div style="font-size:45px;">🥗</div>
+        <h2>Donate Food</h2>
+        <p style="color:#63746f;">Share surplus food with people in need.</p>
+    </div>
+
+    <form method="POST">
+        <label for="food_name">Food Name *</label>
+        <input id="food_name" type="text" name="food_name"
+               placeholder="Example: Vegetarian Meal Boxes" required maxlength="150">
+
+        <label for="quantity">Quantity *</label>
+        <input id="quantity" type="text" name="quantity"
+               placeholder="Example: 25 portions" required maxlength="100">
+
+        <label for="location">Pickup Location *</label>
+        <input id="location" type="text" name="location"
+               placeholder="Example: Kothrud, Pune" required maxlength="200">
+
+        <label for="pickup_time">Pickup Date and Time *</label>
+        <input id="pickup_time" type="datetime-local" name="pickup_time" required>
+
+        <label for="description">Additional Details</label>
+        <textarea id="description" name="description"
+                  placeholder="Describe the food and any important details..."
+                  maxlength="1000"></textarea>
+
+        <button type="submit" class="btn btn-green">🌿 Submit Food Donation</button>
+    </form>
+</main>
+
+<footer>
+    <div class="footer-brand">🌿 ShareMeal</div>
+    <p>Every meal matters.</p>
+</footer>
+
+</body>
+</html>

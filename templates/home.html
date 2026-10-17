@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShareMeal | Food Donation Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="/" class="brand">
+        <span class="brand-icon">🌿</span>
+        <span><strong>ShareMeal</strong><small>Food Waste Reduction & Donation Portal</small></span>
+    </a>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="#about">About</a>
+        <a href="#donations">Donations</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-buttons">
+        {% if session.get('user_id') %}
+            <span>Hi, {{ session.get('user_name') }}</span>
+            {% if session.get('role') == 'admin' %}
+                <a class="btn btn-outline" href="/admin">Admin</a>
+            {% endif %}
+            <a class="btn btn-green" href="/logout">Logout</a>
+        {% else %}
+            <a class="btn btn-outline" href="/login">Login</a>
+            <a class="btn btn-green" href="/register">Register</a>
+        {% endif %}
+    </div>
+</header>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="tag">🌱 Reduce Food Waste · Feed the Needy</span>
+            <h1>Good Food Deserves<br>a <span>Second Chance</span></h1>
+            <p>Connect surplus food with people in need.</p>
+            <p>Reduce food waste and make every meal count.</p>
+
+            <div class="hero-buttons">
+                <a href="/donate" class="btn btn-green">🍴 Donate Food</a>
+                <a href="#donations" class="btn btn-outline">⌕ Find Donations</a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1200&q=85"
+                 alt="Fresh food ready to share">
+            <div class="image-caption">Small Acts<br>Make a Big Impact ♡</div>
+        </div>
+    </section>
+
+    <section class="how-section" id="about">
+        <h2>How It Works</h2>
+        <div class="leaf-line">──── 🌿 ────</div>
+
+        <div class="steps">
+            <article class="step">
+                <div class="step-icon green-circle">♨</div>
+                <h3>1. Donate Food</h3>
+                <p>Donors list surplus food available for collection.</p>
+            </article>
+            <article class="step">
+                <div class="step-icon blue-circle">⌕</div>
+                <h3>2. Find Donations</h3>
+                <p>Find suitable food donations near you.</p>
+            </article>
+            <article class="step">
+                <div class="step-icon yellow-circle">🤝</div>
+                <h3>3. Request Pickup</h3>
+                <p>Submit a pickup request for available food.</p>
+            </article>
+            <article class="step">
+                <div class="step-icon pink-circle">🚚</div>
+                <h3>4. Collect & Share</h3>
+                <p>Collect food and share it with those in need.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="donations-section" id="donations">
+        <div class="section-heading">
+            <h2>🌿 Featured Food Donations</h2>
+            <span>{{ donations|length }} available listing(s)</span>
+        </div>
+
+        <div class="donation-grid">
+            {% for donation in donations %}
+            <article class="donation-card">
+                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80"
+                     alt="Food donation">
+                <div class="card-content">
+                    <span class="available-label">Available</span>
+                    <h3>{{ donation['food_name'] }}</h3>
+                    <p>🍴 Quantity: {{ donation['quantity'] }}</p>
+                    <p>📍 Location: {{ donation['location'] }}</p>
+                    <p>🕒 Pickup: {{ donation['pickup_time'] }}</p>
+                    {% if donation['description'] %}
+                        <p>{{ donation['description'] }}</p>
+                    {% endif %}
+
+                    {% if session.get('user_id') and session.get('user_id') != donation['user_id'] %}
+                    <form method="POST" action="/request-pickup/{{ donation['id'] }}">
+                        <button class="btn btn-green full-button" type="submit">Request Pickup →</button>
+                    </form>
+                    {% elif not session.get('user_id') %}
+                    <a class="btn btn-green full-button" href="/login">Login to Request →</a>
+                    {% else %}
+                    <p class="own-donation">Your donation</p>
+                    {% endif %}
+                </div>
+            </article>
+            {% else %}
+            <div class="empty-state">
+                <span>🥗</span>
+                <h3>No donations yet</h3>
+                <p>Be the first to share food with your community!</p>
+                <a href="/donate" class="btn btn-green">Donate Food</a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="impact-section">
+        <div><strong>🥗 Community</strong><span>Food donations</span></div>
+        <div><strong>🤝 Together</strong><span>Helping people</span></div>
+        <div><strong>🌿 Less Waste</strong><span>A greener future</span></div>
+        <div><strong>💚 More Hope</strong><span>Every meal matters</span></div>
+    </section>
+</main>
+
+<footer id="contact">
+    <div class="footer-brand">🌿 ShareMeal <small>Food Waste Reduction & Donation Portal</small></div>
+    <p>Home &nbsp; About &nbsp; Donations &nbsp; Contact</p>
+    <p>© 2026 ShareMeal. Every meal matters.</p>
+</footer>
+
+</body>
+</html>
+
